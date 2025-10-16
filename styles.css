@@ -14,14 +14,30 @@
 /* base values */
 * {
     box-sizing: border-box;
-}
-
-html, body {
-    height: 100vh;
     margin: 0;
     padding: 0;
 }
 
+html, body {
+    height: 100%;
+    min-height: 100vh;
+}
+
 body {
     font-size: 18px;
+    display: flex;
+    justify-content: center;
 }
+
+/* header */
+header {
+    display: flex;
+    outline: 2px solid black;
+    height: 50%;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 100px 250px;
+    background: url(assets/header-bg.jpg) 70% 20% / 80% no-repeat;
+}
+
