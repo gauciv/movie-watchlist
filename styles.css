@@ -19,7 +19,6 @@
 }
 
 html, body {
-    height: 100%;
     min-height: 100vh;
 }
 
@@ -30,6 +29,8 @@ body {
     align-items: center;
     font-family: "Inter", sans-serif;
     background-color: var(--main-bg-black);
+    overflow-y: auto;
+    padding-bottom: 30px;
 }
 
 /* header */
@@ -141,4 +142,26 @@ header > button:hover {
 
 #search-placeholder > div {
     background-color: var(--search-btn-bg-gray);
+}
+
+/* search results */
+#search-results {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+}
+
+#placeholder-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#placeholder-results > p {
+    color: var(--placeholder-text-gray);
+    font-weight: 900;
+    font-size: 1.25rem;
 }
