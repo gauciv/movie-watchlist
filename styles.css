@@ -1,0 +1,27 @@
+/* colors */
+:root {
+    --base-white: #FFFFFF;
+    --base-gray: #9CA3AF;
+    --base-font-gray: #A5A5A5;
+    --base-light-gray: #4B4B4B;
+    --base-dark-gray: #2E2F2E;
+    --base-black: #121212;
+    --base-gray-line: #2C2C2C;
+    --base-error-gray: #787878;
+    --base-line-white: #E5E7EB;
+}
+
+/* base values */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 18px;
+}
