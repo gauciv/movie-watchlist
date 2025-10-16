@@ -153,11 +153,11 @@ header > button:hover {
 #search-results {
     height: 400px;
     display: flex;
-    justify-content: center;
-    align-items: center;;
+    padding: 10px;
 }
 
 #placeholder-results {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
