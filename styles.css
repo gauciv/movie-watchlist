@@ -103,6 +103,11 @@ header > button:hover {
     font-size: 1.25rem;
 }
 
+#search-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 #search-btn:hover {
     background-color: color-mix(in srgb, var(--search-btn-bg-gray), white 15%);
     transform: scale(1.03);
