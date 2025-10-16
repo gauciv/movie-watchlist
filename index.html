@@ -15,11 +15,15 @@
         <button id="watchlist">My Watchlist</button>
     </header>
     <main>
-        <section id="search-bar">
-            <p id="search-symbol"></p>
-            <input type="text" id="search-input" placeholder="e,g. Titanic">
-            <div id="search-btn"></div>
-        </section>
+        <div id="search-bar">
+            <div id="input-bar">
+                <div id="search-placeholder">
+                    <img id="search-icon" src="assets/icons/search-icon.png">
+                    <input type="text" id="search-input" placeholder="e,g. Titanic">
+                </div>
+            </div>
+            <button id="search-btn">Search</button>
+        </div>
         <section id="search-results"></section>
     </main>
     <script src="script.js"></script>
