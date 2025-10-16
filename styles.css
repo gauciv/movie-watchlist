@@ -146,7 +146,7 @@ header > button:hover {
 
 /* search results */
 #search-results {
-    height: 600px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;;
