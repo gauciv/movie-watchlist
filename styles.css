@@ -1,14 +1,14 @@
 /* colors */
 :root {
-    --base-white: #FFFFFF;
-    --base-gray: #9CA3AF;
+    --font-white: #FFFFFF;
+    --search-symbol-gray: #9CA3AF;
     --base-font-gray: #A5A5A5;
-    --base-light-gray: #4B4B4B;
-    --base-dark-gray: #2E2F2E;
-    --base-black: #121212;
-    --base-gray-line: #2C2C2C;
-    --base-error-gray: #787878;
-    --base-line-white: #E5E7EB;
+    --search-btn-bg-gray: #4B4B4B;
+    --placeholder-text-gray: #2E2F2E;
+    --main-bg-black: #121212;
+    --search-hr-line: #2C2C2C;
+    --fonnt-error-gray: #787878;
+    --watchlist-line-white: #E5E7EB;
 }
 
 /* base values */
@@ -38,6 +38,6 @@ header {
     align-items: center;
     width: 100%;
     padding: 100px 250px;
-    background: url(assets/header-bg.jpg) 70% 20% / 80% no-repeat;
+    background: url(assets/header-bg.avif) 60% 100%/cover no-repeat;
 }
 
