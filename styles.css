@@ -178,7 +178,7 @@ header > button:hover {
 }
 
 /* movie results */
-#movie-container {
+.containers {
     display: flex;
     flex-direction: column;
     align-items: center;
