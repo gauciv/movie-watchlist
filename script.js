@@ -13,7 +13,15 @@ search_input.addEventListener("input", () => {
     search_btn.disabled = !search_value;
 });
 
+search_input.addEventListener("keydown", (e) => {
+    if(e.key === "Enter" && !search_btn.disabled) {
+        e.preventDefault();
+        search_btn.click();
+    }
+});
+
 search_btn.addEventListener("click", async () => {
+    movies_id=[]
     const title = search_input.value
     const url = `${CONFIG.API_KEY}&s=${encodeURIComponent(title)}`
     console.log(url)
@@ -61,6 +69,7 @@ async function getFullMovieDetails(arr) {
 
 function renderMovies(arr) {
     let render = ""
+    movie_container.innerHTML = "";
     for (const movie of arr) {  
         render += `
             <div class="movie-details">
@@ -82,7 +91,9 @@ function renderMovies(arr) {
                 </div>
             </div>
         `
-    }
+    };
+    arr.length = 0;
     placeholder.style.display = "none";
     movie_container.innerHTML = render;
+    render = "";
 }
