@@ -235,6 +235,22 @@ header > button:hover {
     display: flex;
     gap: 10px;
     align-items: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+    background: none;
+    color: var(--font-white);
+    border: none;
+    font-size: 1.20rem;
+}
+
+.watchlist:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.watchlist:active {
+  transform: scale(0.95);
+  opacity: 0.8;
 }
 
 .add-icon {

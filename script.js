@@ -41,9 +41,7 @@ search_btn.addEventListener("click", async () => {
         if (!res.ok) {
             throw new Error(`HTTP Error: ${res.status}`)
         }
-        for (let i=0;i<5;i++) {
-            movies_id.push(data.Search[i].imdbID);
-        }   
+        movies_id = data.Search.slice(0, 5).map(movie => movie.imdbID);   
         console.log(movies_id)
         getFullMovieDetails(movies_id)
     } catch (error) {
@@ -84,7 +82,8 @@ async function getFullMovieDetails(arr) {
 function renderMovies(arr) {
     let render = ""
     let show_header = true;
-    for (const movie of arr) {
+
+    arr.forEach((movie, index) => {
         if (show_header) {
             render = `
                 <p id="search-header">
@@ -104,19 +103,28 @@ function renderMovies(arr) {
                     <div class="movie-stats">
                         <p class="runtime">${movie.runtime}</p>
                         <p class="genre">${movie.genre}</p>
-                        <div class="watchlist">
+                        <button class="watchlist" data-index="${index}" data-obj='${JSON.stringify(movie)}'>
                             <img class="add-icon" src="assets/icons/add-icon.png">
-                            <p class="watchlist-text">Watchlist</p>
-                        </div>
+                            Watchlist
+                        </button>
                     </div>
                     <p class="plot">${movie.plot}</p>
                 </div>
             </div>
         `
-    };
+    });
     arr.length = 0;
     loading.style.display = "none";
     search_btn.disabled = false;
     movie_container.innerHTML = render;
+
+    document.querySelectorAll(".watchlist").forEach(btn => {
+        btn.addEventListener("click", () => {
+            console.log("button clicked");
+            console.log(btn.dataset.index);
+            let movie = JSON.parse(btn.dataset.obj)
+            console.log(movie);
+        });
+    });
     render = "";
 }
