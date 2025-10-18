@@ -243,12 +243,12 @@ header > button:hover {
     font-size: 1.20rem;
 }
 
-.watchlist:hover {
+.watchlist:hover, #indicator:hover {
     transform: scale(1.05);
     opacity: 0.9;
 }
 
-.watchlist:active {
+.watchlist:active #indicator:active {
   transform: scale(0.95);
   opacity: 0.8;
 }
@@ -301,7 +301,7 @@ header > button:hover {
 }
 
 
-/* watchlist html placeholder */
+/* watchlist html  */
 #placeholder {
     display: flex;
     flex-direction: column;
@@ -325,4 +325,10 @@ header > button:hover {
     align-items: center;
     gap: 15px;
     font-size: 1.25rem;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
+
+button {
+    cursor: pointer;
+}
+
