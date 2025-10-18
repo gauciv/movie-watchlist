@@ -120,10 +120,11 @@ function renderMovies(arr) {
 
     document.querySelectorAll(".watchlist").forEach(btn => {
         btn.addEventListener("click", () => {
-            console.log("button clicked");
             console.log(btn.dataset.index);
             let movie = JSON.parse(btn.dataset.obj)
-            console.log(movie);
+            
+            btn.textContent = "Added to Watchlist ✔️"
+            btn.disabled = true;
         });
     });
     render = "";

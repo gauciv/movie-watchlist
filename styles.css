@@ -253,6 +253,13 @@ header > button:hover {
   opacity: 0.8;
 }
 
+.watchlist:disabled {
+    cursor: not-allowed;
+    background-color: rgb(2, 212, 2);
+    padding: 5px 15px;
+    border-radius: 8px;
+}
+
 .add-icon {
     height: 30px;
     width: 30px;
