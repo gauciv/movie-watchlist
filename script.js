@@ -3,16 +3,9 @@ const search_input = document.querySelector("#search-input");
 const search_btn = document.querySelector("#search-btn");
 const placeholder = document.querySelector("#placeholder-results");
 const search_results = document.querySelector("#search-results");
-
-// vars
+const movie_container = document.querySelector("#movie-container");
 
 let movies_id = []
-// if (movies_id) {
-//     placeholder.disabled = true;
-//     placeholder.style.display = "none";
-// }
-
-
 
 // event listeners
 search_input.addEventListener("input", () => {
@@ -75,21 +68,21 @@ function renderMovies(arr) {
                 <div class="description">
                     <div class="movie-header">
                         <p class="header-text">${movie.title}</p>
-                        <p class="rating">${movie.rating}</p>
+                        <p class="rating">⭐ ${movie.rating}</p>
                     </div>
                     <div class="movie-stats">
                         <p class="runtime">${movie.runtime}</p>
                         <p class="genre">${movie.genre}</p>
                         <div class="watchlist">
                             <img class="add-icon" src="assets/icons/add-icon.png">
-                            <p class="watchlisst-text>Watchlist</p>
+                            <p class="watchlist-text">Watchlist</p>
                         </div>
                     </div>
                     <p class="plot">${movie.plot}</p>
                 </div>
             </div>
-            <hr class="search-hr">
         `
     }
-    search_results.innerHTML = render;
+    placeholder.style.display = "none";
+    movie_container.innerHTML = render;
 }

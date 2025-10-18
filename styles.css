@@ -76,10 +76,10 @@ header > button:hover {
 /* search bar */
 #search-bar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     position: relative;
     top: -20px;
-    z-index: 10;
+    z-index: 99999;
 }
 
 #input-bar {
@@ -126,13 +126,16 @@ header > button:hover {
     background: none;
     border: none;
     margin-right: 60px;
-    padding: 5px 450px 5px 0;
+    padding: 5px 250px 5px 0;
     color: var(--base-font-gray);
     font-size: 1.25rem;
+    background-color: transparent;  
+    box-shadow: none;
 }
 
 #search-placeholder > input:focus {
     border: none;
+    background-color: transparent;
     outline: none;
 }
 
@@ -152,8 +155,10 @@ header > button:hover {
 /* search results */
 #search-results {
     height: 400px;
+    padding: 0 100px;
     display: flex;
-    padding: 10px;
+    flex-direction: column;
+    gap: 40px;
 }
 
 #placeholder-results {
@@ -169,4 +174,76 @@ header > button:hover {
     color: var(--placeholder-text-gray);
     font-weight: 900;
     font-size: 1.25rem;
+}
+
+/* movie results */
+#movie-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 150px;
+}
+
+.movie-details {
+    display: flex;
+    padding: 40px 0px;
+    gap: 30px;
+    font-size: 1.20rem;
+    border-bottom: 2px solid var(--fonnt-error-gray);
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    gap: 30px;
+}
+
+.header-text, .rating, .movie-stats {
+    color: var(--font-white);
+    flex-wrap: wrap;
+}
+
+.header-text {
+    font-size: 2rem;
+}
+
+.poster {
+    height: 300px;
+    width: auto;
+}
+
+.plot {
+    color: var(--base-font-gray);
+}
+
+.movie-header, .movie-stats {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    overflow: visible;
+}
+
+.watchlist {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.add-icon {
+    height: 30px;
+    width: 30px;
+}
+
+.genre, .header-text {
+    max-width: 400px;
+}
+
+.header-text, .genre, .plot {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    word-wrap: break-word;
 }
