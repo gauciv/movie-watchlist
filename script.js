@@ -21,6 +21,7 @@ search_input.addEventListener("keydown", (e) => {
 });
 
 search_btn.addEventListener("click", async () => {
+    search_btn.disabled = true;
     movies_id=[]
     const title = search_input.value
     const url = `${CONFIG.API_KEY}&s=${encodeURIComponent(title)}`
@@ -33,11 +34,13 @@ search_btn.addEventListener("click", async () => {
         }
         for (let i=0;i<5;i++) {
             movies_id.push(data.Search[i].imdbID);
-        }
+        }   
         console.log(movies_id)
         getFullMovieDetails(movies_id)
     } catch (error) {
         console.log(`Caught error: ${error.message}`);
+    } finally {
+        search_btn.disabled = false;
     }
     
 });
@@ -64,6 +67,7 @@ async function getFullMovieDetails(arr) {
             plot: data.Plot
         });
     }
+    console.log(movies)
     renderMovies(movies)
 }
 
