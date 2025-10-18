@@ -5,8 +5,10 @@ const placeholder = document.querySelector("#placeholder-results");
 const search_results = document.querySelector("#search-results");
 const movie_container = document.querySelector("#movie-container");
 const loading = document.querySelector("#loading");
+const watchlist_nav = document.querySelector("#watchlist");
 
-let movies_id = []
+let movies_id = [];
+let movies = []
 let get_input;
 
 // event listeners
@@ -50,9 +52,12 @@ search_btn.addEventListener("click", async () => {
     
 });
 
+watchlist_nav.addEventListener("click", () => {
+    window.location.href = "watchlist.html"
+});
+
 // functions
 async function getFullMovieDetails(arr) {
-    let movies = []
     for (const id of arr) {
         const url = `${CONFIG.API_KEY}&i=${id}`
         
@@ -62,7 +67,12 @@ async function getFullMovieDetails(arr) {
 
             if (!res.ok) {
                 throw new Error(`HTTP Error: ${res.status}`);
-            }  
+            }
+            
+            if (movies.length > 5) {
+                movies.length = 0;
+            }
+
             movies.push ({
                 title: data.Title,
                 rating: data.imdbRating,
@@ -113,7 +123,7 @@ function renderMovies(arr) {
             </div>
         `
     });
-    arr.length = 0;
+    // arr.length = 0;
     loading.style.display = "none";
     search_btn.disabled = false;
     movie_container.innerHTML = render;
@@ -121,10 +131,20 @@ function renderMovies(arr) {
     document.querySelectorAll(".watchlist").forEach(btn => {
         btn.addEventListener("click", () => {
             console.log(btn.dataset.index);
-            let movie = JSON.parse(btn.dataset.obj)
+            console.log(movies)
+            let movie = movies[btn.dataset.index]
+            console.log(movie)
             
-            btn.textContent = "Added to Watchlist ✔️"
-            btn.disabled = true;
+
+            let storage = JSON.parse(localStorage.getItem("movie")) || [];
+            storage.push(movie);
+
+            localStorage.setItem("movie", JSON.stringify(storage));
+
+            if (localStorage.getItem("movie")) {
+                btn.textContent = "Added to Watchlist ✔️"
+                btn.disabled = true;
+            }
         });
     });
     render = "";
