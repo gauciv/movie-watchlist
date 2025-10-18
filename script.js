@@ -22,6 +22,7 @@ search_input.addEventListener("keydown", (e) => {
 });
 
 search_btn.addEventListener("click", async () => {
+    search_input.value = "";
     search_btn.disabled = true;
     movies_id=[]
     const title = search_input.value
@@ -82,7 +83,16 @@ async function getFullMovieDetails(arr) {
 
 function renderMovies(arr) {
     let render = ""
-    for (const movie of arr) {  
+    let show_header = true;
+    for (const movie of arr) {
+        if (show_header) {
+            render = `
+                <p id="search-header">
+                Showing search results for "${search_input.value}"
+                </p>
+                `
+            show_header = false;
+        }
         render += `
             <div class="movie-details">
                 <img class="poster" src="${movie.poster}">
