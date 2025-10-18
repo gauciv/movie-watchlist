@@ -4,6 +4,7 @@ const search_btn = document.querySelector("#search-btn");
 const placeholder = document.querySelector("#placeholder-results");
 const search_results = document.querySelector("#search-results");
 const movie_container = document.querySelector("#movie-container");
+const loading = document.querySelector("#loading");
 
 let movies_id = []
 
@@ -26,6 +27,11 @@ search_btn.addEventListener("click", async () => {
     const title = search_input.value
     const url = `${CONFIG.API_KEY}&s=${encodeURIComponent(title)}`
     console.log(url)
+
+    placeholder.style.display = "none";
+    movie_container.innerHTML = "";
+    loading.style.display = "flex";
+
     try {
         const res = await fetch(url);
         const data = await res.json()
@@ -40,7 +46,7 @@ search_btn.addEventListener("click", async () => {
     } catch (error) {
         console.log(`Caught error: ${error.message}`);
     } finally {
-        search_btn.disabled = false;
+        
     }
     
 });
@@ -51,21 +57,24 @@ async function getFullMovieDetails(arr) {
     for (const id of arr) {
         const url = `${CONFIG.API_KEY}&i=${id}`
         
-        const res = await fetch(url);
-        const data = await res.json();
+        try{
+            const res = await fetch(url);
+            const data = await res.json();
 
-        if (!res.ok) {
-            throw new Error(`HTTP Error: ${res.status}`);
+            if (!res.ok) {
+                throw new Error(`HTTP Error: ${res.status}`);
+            }  
+            movies.push ({
+                title: data.Title,
+                rating: data.imdbRating,
+                runtime: data.Runtime,
+                genre: data.Genre,
+                poster: data.Poster,
+                plot: data.Plot
+            });
+        } catch(error) {
+            console.log(`Caught error: ${error.message}`);
         }
-        
-        movies.push ({
-            title: data.Title,
-            rating: data.imdbRating,
-            runtime: data.Runtime,
-            genre: data.Genre,
-            poster: data.Poster,
-            plot: data.Plot
-        });
     }
     console.log(movies)
     renderMovies(movies)
@@ -73,7 +82,6 @@ async function getFullMovieDetails(arr) {
 
 function renderMovies(arr) {
     let render = ""
-    movie_container.innerHTML = "";
     for (const movie of arr) {  
         render += `
             <div class="movie-details">
@@ -97,7 +105,8 @@ function renderMovies(arr) {
         `
     };
     arr.length = 0;
-    placeholder.style.display = "none";
+    loading.style.display = "none";
+    search_btn.disabled = false;
     movie_container.innerHTML = render;
     render = "";
 }
