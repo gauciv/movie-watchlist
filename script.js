@@ -7,10 +7,10 @@ const search_results = document.querySelector("#search-results");
 // vars
 
 let movies_id = []
-if (movies_id) {
-    placeholder.disabled = true;
-    placeholder.style.display = "none";
-}
+// if (movies_id) {
+//     placeholder.disabled = true;
+//     placeholder.style.display = "none";
+// }
 
 
 
@@ -62,7 +62,34 @@ async function getFullMovieDetails(arr) {
             poster: data.Poster,
             plot: data.Plot
         });
-        
     }
-    console.log(movies)
+    renderMovies(movies)
+}
+
+function renderMovies(arr) {
+    let render = ""
+    for (const movie of arr) {  
+        render += `
+            <div class="movie-details">
+                <img class="poster" src="${movie.poster}">
+                <div class="description">
+                    <div class="movie-header">
+                        <p class="header-text">${movie.title}</p>
+                        <p class="rating">${movie.rating}</p>
+                    </div>
+                    <div class="movie-stats">
+                        <p class="runtime">${movie.runtime}</p>
+                        <p class="genre">${movie.genre}</p>
+                        <div class="watchlist">
+                            <img class="add-icon" src="assets/icons/add-icon.png">
+                            <p class="watchlisst-text>Watchlist</p>
+                        </div>
+                    </div>
+                    <p class="plot">${movie.plot}</p>
+                </div>
+            </div>
+            <hr class="search-hr">
+        `
+    }
+    search_results.innerHTML = render;
 }
