@@ -7,6 +7,7 @@ const movie_container = document.querySelector("#movie-container");
 const loading = document.querySelector("#loading");
 
 let movies_id = []
+let get_input;
 
 // event listeners
 search_input.addEventListener("input", () => {
@@ -22,11 +23,12 @@ search_input.addEventListener("keydown", (e) => {
 });
 
 search_btn.addEventListener("click", async () => {
-    search_input.value = "";
     search_btn.disabled = true;
     movies_id=[]
     const title = search_input.value
     const url = `${CONFIG.API_KEY}&s=${encodeURIComponent(title)}`
+    get_input = search_input.value;
+    search_input.value = "";
     console.log(url)
 
     placeholder.style.display = "none";
@@ -45,9 +47,7 @@ search_btn.addEventListener("click", async () => {
         console.log(movies_id)
         getFullMovieDetails(movies_id)
     } catch (error) {
-        console.log(`Caught error: ${error.message}`);
-    } finally {
-        
+        console.log(`Caught error 1: ${error}`);
     }
     
 });
@@ -74,10 +74,10 @@ async function getFullMovieDetails(arr) {
                 plot: data.Plot
             });
         } catch(error) {
-            console.log(`Caught error: ${error.message}`);
+            console.log(`Caught error 2: ${error}`);
         }
     }
-    console.log(movies)
+   
     renderMovies(movies)
 }
 
@@ -88,7 +88,7 @@ function renderMovies(arr) {
         if (show_header) {
             render = `
                 <p id="search-header">
-                Showing search results for "${search_input.value}"
+                Showing search results for "${get_input}"
                 </p>
                 `
             show_header = false;
