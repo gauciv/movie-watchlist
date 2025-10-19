@@ -1,5 +1,6 @@
 const standby = document.querySelector("#placeholder");
 const watchlist_container = document.querySelector("#watchlist-container");
+const clear_btn = document.querySelector("#clear");
 
 document.querySelectorAll(".search-movies").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -16,11 +17,11 @@ if (storage) {
     standby.style.display = "none";
 }
 
-displayWatchlist(storage, display);
+displayWatchlist();
 
-function displayWatchlist(storage, str) {
+function displayWatchlist() {
     storage.forEach((movie) => {
-    str += `
+    display += `
             <div class="movie-details">
                 <img class="poster" src="${movie.poster}">
                 <div class="description">
@@ -37,6 +38,16 @@ function displayWatchlist(storage, str) {
             </div>
         `
     });
+    storage = [];
+    watchlist_container.innerHTML = display;
+    clear_btn.style.display = "flex";
 
-    watchlist_container.innerHTML = str;
 }
+
+clear_btn.addEventListener("click", () => {
+    localStorage.clear();
+    displayWatchlist();
+    watchlist_container.innerHTML = "";
+    clear_btn.style.display = "none";
+    placeholder.style.display = "flex";
+});
