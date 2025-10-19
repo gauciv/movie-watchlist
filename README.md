@@ -12,4 +12,21 @@ This app allows users to search for movies, add them to their watchlist, and man
 - **Add to Watchlist** — Save your favorite movies locally with one click.  
 - **Persistent Storage** — Movies remain stored even after refreshing or closing the browser using `localStorage`.  
 - **Render Watchlist** — Dynamically display all saved movies on the Watchlist page.  
-- **Clear Watchlist** — Remove all movies instantly and reset the page.  
+- **Clear Watchlist** — Remove all movies instantly and reset the page.
+
+---
+
+## ⚙️ Setup
+
+> **Note:** In order for this to work locally, create a `config.js` file in the project root and insert your OMDb API key.
+
+```js
+// config.js
+const CONFIG = {
+    API_KEY: "<insert your OMDb API key here>"
+};
+
+```
+
+Get your own key here:
+https://www.omdbapi.com/apikey.aspx
