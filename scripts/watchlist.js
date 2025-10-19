@@ -5,12 +5,12 @@ const clear_btn = document.querySelector("#clear");
 document.querySelectorAll(".search-movies").forEach((btn) => {
     btn.addEventListener("click", () => {
         console.log("button clicked")
-        window.location.href = "index.html";
+        window.location.href = "../index.html";
     });
 })
 
 let display = "";
-let storage = JSON.parse(localStorage.getItem("movie"));
+let storage = JSON.parse(localStorage.getItem   ("movie"));
 
 if (storage) {
     standby.disabled = true;

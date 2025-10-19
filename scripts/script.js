@@ -53,7 +53,7 @@ search_btn.addEventListener("click", async () => {
 });
 
 watchlist_nav.addEventListener("click", () => {
-    window.location.href = "watchlist.html"
+    window.location.href = "../page/watchlist.html"
 });
 
 // functions
